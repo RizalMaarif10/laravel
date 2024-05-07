@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Admin;
 class AdminController extends Controller
 {
     public function admin()
@@ -43,6 +44,7 @@ class AdminController extends Controller
         $product->Gambar = $request->gambar; 
         $product->Kondisi = $request->kondisi;
         $product->Deskripsi = $request->deskripsi;
+        
 
         $product->save();
         $product = Product::all();
@@ -70,5 +72,11 @@ class AdminController extends Controller
         $product = Product::find($id);
         $product->update($validatedData);     
         return redirect('/index/admin');
+    }
+    public function profile()
+    {
+        $admin = Admin::latest()->get();
+        return view('tampilan.profile', ['admin'=>$admin]);
+        
     }
 }

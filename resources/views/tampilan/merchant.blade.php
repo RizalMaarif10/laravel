@@ -21,7 +21,7 @@
                         <h4 class="mb-4 position-absolute top-0 start-0">List Product</h4>
                         <div class="position-absolute top-0 end-0">
                         <a href="profile" type="button" class="btn btn-primary ">Lihat Profile</a>
-                        <a href="input" type="button" class="btn btn-dark ">Tambah Produk</a>
+                        <a href="merchant/input" type="button" class="btn btn-dark ">Tambah Produk</a>
                         <a href="/index" type="button" class="btn btn-secondary" >Kembali ke Produk</a>
                     </div>
                     </div>
@@ -39,25 +39,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($products as $product)
+                                @foreach($merchants as $merchant)
                                 <tr class="table-secondary">
-                                    <th scope="row">{{ $product->id }}</th>
-                                    <td scope="col">{{ $product->Nama }}</td>
-                                    <td scope="col">{{ $product->Stok }}</td>
-                                    <td scope="col">{{ $product->Berat }}</td>
-                                    <td scope="col">Rp. {{ $product->Harga }}</td>
+                                    <th scope="row">{{ $merchant->id }}</th>
+                                    <td scope="col">{{ $merchant->Nama }}</td>
+                                    <td scope="col">{{ $merchant->Stok }}</td>
+                                    <td scope="col">{{ $merchant->Berat }}</td>
+                                    <td scope="col">Rp. {{ $merchant->Harga }}</td>
                                     <td scope="col">
-                                        @if($product->Kondisi == 'Baru')
-                                            <p class="bg-primary text-light rounded-4 d-inline-block px-3 py-1">{{ $product->Kondisi }}</p>
-                                        @elseif($product->Kondisi == 'Bekas')
-                                            <p class="bg-dark text-light rounded-4 d-inline-block px-3 py-1">{{ $product->Kondisi }}</p>
+                                        @if($merchant->Kondisi == 'Baru')
+                                            <p class="bg-primary text-light rounded-4 d-inline-block px-3 py-1">{{ $merchant->Kondisi }}</p>
+                                        @elseif($merchant->Kondisi == 'Bekas')
+                                            <p class="bg-dark text-light rounded-4 d-inline-block px-3 py-1">{{ $merchant->Kondisi }}</p>
                                         @else
                                             
                                         @endif
                                     </td>
                                     <td scope="col">
-                                        <a href="{{ route('tampilan.update', ['id' => $product->id]) }}" type="button" class="btn btn-warning">Update</a>
-                                        <a href="{{ route('tampilan.admin.delete', ['id' => $product->id]) }}" type="button" class="btn btn-danger">Delete</a>
+                                        <a href="{{ route('tampilan.update', ['id' => $merchant->id]) }}" type="button" class="btn btn-warning">Update</a>
+                                        <a href="{{ route('tampilan.merch.delete', ['id' => $merchant->id]) }}" type="button" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

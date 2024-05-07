@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text("Gambar");
             $table->enum("Kondisi",["Baru","Bekas"]);
             $table->text("Deskripsi");
-             
+            $table->unsignedBigInteger('merchant_id')->nullable();
         });
     }
 

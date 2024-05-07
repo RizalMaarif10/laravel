@@ -15,4 +15,5 @@ class HasilController extends Controller
         
             
     }
+    
 }
