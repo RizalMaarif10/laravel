@@ -13,15 +13,7 @@
 
 <form action="{{ route('tampilan.merchant') }}" method="POST" >
   @csrf
-  @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+  
   <div class="album py-5 bg-body-tertiary">
     <div class="container ">
       <div class="row justify-content-center">
@@ -30,51 +22,67 @@
             <h4 class="text-center mb-4">Tambah Data Produk</h4>
             <div class="form-group">
               <label for="nama_produk">Nama Produk</label>
-              <input type="text" class="form-control form-control-sm mb-2" id="nama" name="nama" @error('nama') is-invalid @enderror
+              <input type="text" class="form-control form-control-sm mb-2 @error('nama') is-invalid @enderror" id="nama" name="nama" 
                  placeholder="Masukan nama produk" >
-                 
+                 @error('nama')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
             </div>
 
             <div class="form-group">
               <label for="berat">Gambar</label>
-              <input type="text" class="form-control form-control-sm mb-2" id="gambar" name="gambar"
+              <input type="file" class="form-control form-control-sm mb-2 @error('gambar') is-invalid @enderror" id="gambar" name="gambar" 
                 placeholder="Masukan berat produk"/>
-              
+                @error('gambar')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
             </div>
             <div class="form-group">
               <label for="berat">Berat</label>
-              <input type="number" class="form-control form-control-sm mb-2" id="berat" name="berat"
-                placeholder="Masukan berat produk"/>
-              
-            </div>
+              <input type="number" class="form-control form-control-sm mb-2 @error('berat') is-invalid @enderror" id="berat" name="berat" placeholder="Masukan berat produk"/>
+              @error('berat')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+          </div>
             <div class="form-group">
               <label for="harga">Harga</label>
-              <input type="number"  class="form-control form-control-sm mb-2" id="harga" name="harga"
+              <input type="number"  class="form-control form-control-sm mb-2  @error('harga') is-invalid @enderror" id="harga" name="harga"
                 placeholder="Masukan harga produk" />
-              
+                @error('harga')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
             </div>
             <div class="form-group">
               <label for="stok">Stok</label>
-              <input type="number" class="form-control form-control-sm mb-2" id="stok" name="stok"
+              <input type="number" class="form-control form-control-sm mb-2  @error('stok') is-invalid @enderror" id="stok" name="stok"
                 placeholder="Masukan stok produk" />
-              
+                @error('stok')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
             </div>
+            <div>
             <label for="kondisi">Kondisi</label>
-            <select class="form-select mb-2" name="kondisi" id="kondisi" aria-label="Default select example" >
-              <option  selected>Pilih Kondisi Barang</option>
+            <select class="form-select mb-2  @error('kondisi') is-invalid @enderror" name="kondisi" id="kondisi" aria-label="Default select example" >
+              <option disabled selected>Pilih Kondisi Barang</option>
               <option value="Baru">Baru</option>
               <option value="Bekas">Bekas</option>
             </select>
-            
+            @error('kondisi')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+          </div>
             <div class="mb-3">
               <label for="deskripisi" class="form-label" >Deskripsi</label>
-              <textarea class="form-control" id="deskripisi" name="deskripsi"
+              <textarea class="form-control  @error('deskripsi') is-invalid @enderror" id="deskripisi" name="deskripsi"
                 placeholder="Masukan deskripsi produk yang akan dijual"  rows="3"></textarea>
-              
+                @error('deskripsi')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
             </div>
             <div class="text-center">
               <div class="d-grid gap-2 col-8 mx-auto">
                 <button class="btn btn-primary">Pesan Sekarang</button>
+                <a href="/index/merchant" type="button" class="btn btn-warning">Kembali</a>
               </div>
             </div>
           </div>

@@ -22,7 +22,7 @@ class MerchantController extends Controller
                      'berat' => 'required|numeric',
                      'harga' => 'required|numeric',
                      'stok' => 'required|numeric',
-                     'gambar' => 'required',
+                     'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
                      'kondisi' => 'required',
                      'deskripsi' => 'required',
                  ], [
@@ -34,9 +34,20 @@ class MerchantController extends Controller
                      'stok.required' => 'Stok produk harus diisi.',
                      'stok.numeric' => 'Stok produk harus berupa angka.',
                      'kondisi.required' => 'Kondisi produk harus dipilih.',
-                     'gambar.required' => 'Deskripsi produk harus diisi.',
+                     'gambar.required' => 'Gambar produk harus diisi.',
                      'deskripsi.required' => 'Deskripsi produk harus diisi.',
                  ]);
+                 if ($request->hasFile('gambar')) {
+                    
+                    $gambarPath = $request->file('gambar')->store('public/gambar');
+                    
+                    
+                    $gambar = basename($gambarPath);
+                } else {
+                   
+                    return back()->withErrors(['gambar' => 'Tidak ada file gambar yang diunggah.'])->withInput();
+                    
+                }
                     $merchant = new Merchant();
             
                     $merchant->Nama = $request->nama;

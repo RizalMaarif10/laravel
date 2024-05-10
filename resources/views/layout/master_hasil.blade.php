@@ -11,17 +11,17 @@
         <div class="container bg-info p-3">
             <div class="row">
                 <div class="col-sm">
-                    <a href="/index/admin" class="btn btn-primary mt-2" type="button">Halaman Pengguna Admin</a>
+                    <a href="/index/admin" class="btn btn-primary mt-2" type="button">Halaman Pengguna 1</a>
                 </div>
                 <div class="col-sm">
                     <h3 class="text-center text-decoration-underline">Product</h3>
                 </div>
                 <div class="col-sm">
-                    <a href="/index/merchant" class="btn btn-success mt-2 float-end" type="button">Halaman Pengguna Merchant</a>
+                    <a href="/index/merchant" class="btn btn-success mt-2 float-end" type="button">Halaman Pengguna 2</a>
                 </div>
             </div>
         
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 p-3">
+            <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3 p-3">
                 @foreach($products as $product)
     <div class="col">
         <div class="card shadow-sm">
@@ -42,7 +42,8 @@
                 </div>
             </div>
         </div>
-        <div class="card shadow-sm">
+       
+        <div class="card shadow-sm mt-3">
             <img class="bd-placeholder-img card-img-top" src="{{ $product->merchant->Gambar }}" alt="">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
@@ -61,6 +62,7 @@
             </div>
         </div>
     </div>
+    
     @endforeach
                         </div>
                     </div>
